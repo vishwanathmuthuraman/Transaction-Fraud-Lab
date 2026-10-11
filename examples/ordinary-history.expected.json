@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "case_id": "ordinary-history",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [
+    "syn-pay-prior"
+  ],
+  "required_behaviors": [
+    "Prior count is one; prior sum is 1000 GBP minor units."
+  ],
+  "forbidden_behaviors": [
+    "Do not include current amount in prior-history features."
+  ],
+  "requirement_ids": [
+    "FR04",
+    "FR13"
+  ],
+  "measured_model_result": null
+}

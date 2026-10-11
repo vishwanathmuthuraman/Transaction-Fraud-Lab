@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "cross-organization-context",
+  "expected_status": "input_error",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Reject a context bundle containing another organization."
+  ],
+  "forbidden_behaviors": [
+    "Do not infer relationship from matching synthetic account ID strings."
+  ],
+  "requirement_ids": [
+    "FR02"
+  ],
+  "measured_model_result": null
+}

@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "purpose": "hand_calculated_evaluation_specifications_not_model_results",
+  "stage_knowledge_boundaries": [
+    {
+      "stage": "training",
+      "knowledge_cutoff": "2025-06-09T23:59:59.999999Z",
+      "artifact_frozen_at": "2025-06-09T23:59:59.999999Z",
+      "next_scoring_at": "2025-06-10T00:00:00Z",
+      "labels": [
+        {
+          "id": "known-before-training",
+          "status": "resolved",
+          "available_at": "2025-06-09T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "late-training",
+          "status": "resolved",
+          "available_at": "2025-06-19T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "unresolved-training",
+          "status": "unresolved",
+          "available_at": null,
+          "class": null
+        }
+      ],
+      "expected_eligible_ids": [
+        "known-before-training"
+      ],
+      "note": "Eligibility specification only; the illustrative three-row stage fails minimum sample and coverage gates."
+    },
+    {
+      "stage": "model_selection",
+      "knowledge_cutoff": "2025-09-07T23:59:59.999999Z",
+      "artifact_frozen_at": "2025-09-07T23:59:59.999999Z",
+      "next_scoring_at": "2025-09-08T00:00:00Z",
+      "labels": [
+        {
+          "id": "known-before-model_selection",
+          "status": "resolved",
+          "available_at": "2025-09-07T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "late-model_selection",
+          "status": "resolved",
+          "available_at": "2025-09-17T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "unresolved-model_selection",
+          "status": "unresolved",
+          "available_at": null,
+          "class": null
+        }
+      ],
+      "expected_eligible_ids": [
+        "known-before-model_selection"
+      ],
+      "note": "Eligibility specification only; the illustrative three-row stage fails minimum sample and coverage gates."
+    },
+    {
+      "stage": "calibration",
+      "knowledge_cutoff": "2025-11-26T23:59:59.999999Z",
+      "artifact_frozen_at": "2025-11-26T23:59:59.999999Z",
+      "next_scoring_at": "2025-11-27T00:00:00Z",
+      "labels": [
+        {
+          "id": "known-before-calibration",
+          "status": "resolved",
+          "available_at": "2025-11-26T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "late-calibration",
+          "status": "resolved",
+          "available_at": "2026-03-01T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "unresolved-calibration",
+          "status": "unresolved",
+          "available_at": null,
+          "class": null
+        }
+      ],
+      "expected_eligible_ids": [
+        "known-before-calibration"
+      ],
+      "note": "Eligibility specification only; the illustrative three-row stage fails minimum sample and coverage gates."
+    },
+    {
+      "stage": "policy",
+      "knowledge_cutoff": "2026-02-24T23:59:59.999999Z",
+      "artifact_frozen_at": "2026-02-24T23:59:59.999999Z",
+      "next_scoring_at": "2026-02-25T00:00:00Z",
+      "labels": [
+        {
+          "id": "known-before-policy",
+          "status": "resolved",
+          "available_at": "2026-02-24T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "late-policy",
+          "status": "resolved",
+          "available_at": "2026-03-06T00:00:00Z",
+          "class": "fraudulent"
+        },
+        {
+          "id": "unresolved-policy",
+          "status": "unresolved",
+          "available_at": null,
+          "class": null
+        }
+      ],
+      "expected_eligible_ids": [
+        "known-before-policy"
+      ],
+      "note": "Eligibility specification only; the illustrative three-row stage fails minimum sample and coverage gates."
+    }
+  ],
+  "coverage_gate": {
+    "minimum_resolved_fraction": 0.9,
+    "minimum_positive_count": 30,
+    "minimum_negative_count": 30,
+    "resolved_count": 2,
+    "total_count": 3,
+    "positive_count": 2,
+    "negative_count": 0,
+    "expected_outcome": "insufficient_label_coverage"
+  },
+  "unknown_capacity_cost": {
+    "rows": [
+      {
+        "id": "a",
+        "selected": true,
+        "class": "fraudulent",
+        "amount_minor": 1000
+      },
+      {
+        "id": "b",
+        "selected": true,
+        "class": "legitimate",
+        "amount_minor": 1200
+      },
+      {
+        "id": "c",
+        "selected": true,
+        "class": null,
+        "amount_minor": 2000
+      },
+      {
+        "id": "d",
+        "selected": true,
+        "class": null,
+        "amount_minor": 3000
+      },
+      {
+        "id": "e",
+        "selected": false,
+        "class": "fraudulent",
+        "amount_minor": 4000
+      },
+      {
+        "id": "f",
+        "selected": false,
+        "class": null,
+        "amount_minor": 5000
+      }
+    ],
+    "currency": "GBP",
+    "review_cost_minor": 100,
+    "false_alert_cost_minor": 500,
+    "missed_loss_fraction": 1,
+    "expected": {
+      "selected_count": 4,
+      "selected_resolved_count": 2,
+      "selected_unknown_count": 2,
+      "unselected_unknown_count": 1,
+      "precision_resolved": 0.5,
+      "precision_population_lower": 0.25,
+      "precision_population_upper": 0.75,
+      "recall_resolved": 0.5,
+      "recall_population_lower": 0.3333333333333333,
+      "recall_population_upper": 0.75,
+      "cost_known_minor": 4900,
+      "cost_lower_minor": 4900,
+      "cost_upper_minor": 10900
+    }
+  },
+  "bootstrap_rerank": {
+    "estimand": "conditional_on_frozen_scores_and_history; resample coherent components and recompute daily queues",
+    "review_fraction": 0.5,
+    "day": "2026-01-10",
+    "rows": [
+      {
+        "id": "a1",
+        "component_id": "A",
+        "candidate_score": 0.99,
+        "baseline_score": 0.99,
+        "class": "legitimate"
+      },
+      {
+        "id": "a2",
+        "component_id": "A",
+        "candidate_score": 0.98,
+        "baseline_score": 0.98,
+        "class": "legitimate"
+      },
+      {
+        "id": "b1",
+        "component_id": "B",
+        "candidate_score": 0.6,
+        "baseline_score": 0.3,
+        "class": "fraudulent"
+      },
+      {
+        "id": "b2",
+        "component_id": "B",
+        "candidate_score": 0.4,
+        "baseline_score": 0.8,
+        "class": "legitimate"
+      }
+    ],
+    "component_draws": [
+      "B",
+      "B"
+    ],
+    "expected": {
+      "original_k": 2,
+      "original_candidate_selected": [
+        "a1",
+        "a2"
+      ],
+      "resampled_k": 2,
+      "resampled_candidate_selected": [
+        "b1#0",
+        "b1#1"
+      ],
+      "resampled_baseline_selected": [
+        "b2#0",
+        "b2#1"
+      ],
+      "candidate_precision_resolved": 1.0,
+      "baseline_precision_resolved": 0.0,
+      "candidate_recall_resolved": 1.0,
+      "baseline_recall_resolved": 0.0,
+      "selection_count_if_original_flags_reused": 0
+    }
+  },
+  "measured_model_result": null
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "unresolved-label",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Keep unresolved count and exclude the label from binary training."
+  ],
+  "forbidden_behaviors": [
+    "Do not encode unresolved as legitimate."
+  ],
+  "requirement_ids": [
+    "FR07"
+  ],
+  "measured_model_result": null
+}

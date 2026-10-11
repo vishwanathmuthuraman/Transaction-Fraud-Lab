@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "simultaneous-event",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Use the same pre-batch snapshot for equal-time events."
+  ],
+  "forbidden_behaviors": [
+    "Do not let input row ordering expose a simultaneous event."
+  ],
+  "requirement_ids": [
+    "FR04"
+  ],
+  "measured_model_result": null
+}

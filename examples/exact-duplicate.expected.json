@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "exact-duplicate",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Deduplicate prior event; count remains one and amount 1000."
+  ],
+  "forbidden_behaviors": [
+    "Do not double count repeated transport delivery."
+  ],
+  "requirement_ids": [
+    "FR05"
+  ],
+  "measured_model_result": null
+}

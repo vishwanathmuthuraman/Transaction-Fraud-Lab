@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "payment_id",
+    "organization_id",
+    "status",
+    "class",
+    "available_at",
+    "provenance"
+  ],
+  "properties": {
+    "payment_id": {
+      "type": "string"
+    },
+    "organization_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "resolved",
+        "unresolved"
+      ]
+    },
+    "class": {
+      "enum": [
+        "legitimate",
+        "fraudulent",
+        null
+      ]
+    },
+    "available_at": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "provenance": {
+      "const": "original_synthetic_oracle"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "unresolved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "class": {
+            "type": "null"
+          },
+          "available_at": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "class": {
+            "enum": [
+              "legitimate",
+              "fraudulent"
+            ]
+          },
+          "available_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

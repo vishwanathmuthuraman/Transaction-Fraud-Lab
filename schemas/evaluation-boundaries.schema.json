@@ -1,0 +1,417 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "purpose": {
+      "const": "hand_calculated_evaluation_specifications_not_model_results"
+    },
+    "stage_knowledge_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "stage": {
+            "enum": [
+              "training",
+              "model_selection",
+              "calibration",
+              "policy"
+            ]
+          },
+          "knowledge_cutoff": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "artifact_frozen_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "next_scoring_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "resolved",
+                    "unresolved"
+                  ]
+                },
+                "available_at": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "class": {
+                  "enum": [
+                    "legitimate",
+                    "fraudulent",
+                    null
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "status",
+                "available_at",
+                "class"
+              ]
+            }
+          },
+          "expected_eligible_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "stage",
+          "knowledge_cutoff",
+          "artifact_frozen_at",
+          "next_scoring_at",
+          "labels",
+          "expected_eligible_ids",
+          "note"
+        ]
+      }
+    },
+    "coverage_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum_resolved_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minimum_positive_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "minimum_negative_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resolved_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "positive_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "negative_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_outcome": {
+          "const": "insufficient_label_coverage"
+        }
+      },
+      "required": [
+        "minimum_resolved_fraction",
+        "minimum_positive_count",
+        "minimum_negative_count",
+        "resolved_count",
+        "total_count",
+        "positive_count",
+        "negative_count",
+        "expected_outcome"
+      ]
+    },
+    "unknown_capacity_cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "selected": {
+                "type": "boolean"
+              },
+              "class": {
+                "enum": [
+                  "legitimate",
+                  "fraudulent",
+                  null
+                ]
+              },
+              "amount_minor": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "id",
+              "selected",
+              "class",
+              "amount_minor"
+            ]
+          }
+        },
+        "currency": {
+          "const": "GBP"
+        },
+        "review_cost_minor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "false_alert_cost_minor": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missed_loss_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "selected_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "selected_resolved_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "selected_unknown_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unselected_unknown_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "precision_resolved": {
+              "type": "number"
+            },
+            "precision_population_lower": {
+              "type": "number"
+            },
+            "precision_population_upper": {
+              "type": "number"
+            },
+            "recall_resolved": {
+              "type": "number"
+            },
+            "recall_population_lower": {
+              "type": "number"
+            },
+            "recall_population_upper": {
+              "type": "number"
+            },
+            "cost_known_minor": {
+              "type": "number"
+            },
+            "cost_lower_minor": {
+              "type": "number"
+            },
+            "cost_upper_minor": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "selected_count",
+            "selected_resolved_count",
+            "selected_unknown_count",
+            "unselected_unknown_count",
+            "precision_resolved",
+            "precision_population_lower",
+            "precision_population_upper",
+            "recall_resolved",
+            "recall_population_lower",
+            "recall_population_upper",
+            "cost_known_minor",
+            "cost_lower_minor",
+            "cost_upper_minor"
+          ]
+        }
+      },
+      "required": [
+        "rows",
+        "currency",
+        "review_cost_minor",
+        "false_alert_cost_minor",
+        "missed_loss_fraction",
+        "expected"
+      ]
+    },
+    "bootstrap_rerank": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "estimand": {
+          "type": "string"
+        },
+        "review_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "day": {
+          "type": "string",
+          "format": "date"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "component_id": {
+                "type": "string"
+              },
+              "candidate_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "baseline_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "class": {
+                "enum": [
+                  "legitimate",
+                  "fraudulent",
+                  null
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "component_id",
+              "candidate_score",
+              "baseline_score",
+              "class"
+            ]
+          }
+        },
+        "component_draws": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "original_k": {
+              "type": "number"
+            },
+            "original_candidate_selected": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "resampled_k": {
+              "type": "number"
+            },
+            "resampled_candidate_selected": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "resampled_baseline_selected": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "candidate_precision_resolved": {
+              "type": "number"
+            },
+            "baseline_precision_resolved": {
+              "type": "number"
+            },
+            "candidate_recall_resolved": {
+              "type": "number"
+            },
+            "baseline_recall_resolved": {
+              "type": "number"
+            },
+            "selection_count_if_original_flags_reused": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "original_k",
+            "original_candidate_selected",
+            "resampled_k",
+            "resampled_candidate_selected",
+            "resampled_baseline_selected",
+            "candidate_precision_resolved",
+            "baseline_precision_resolved",
+            "candidate_recall_resolved",
+            "baseline_recall_resolved",
+            "selection_count_if_original_flags_reused"
+          ]
+        }
+      },
+      "required": [
+        "estimand",
+        "review_fraction",
+        "day",
+        "rows",
+        "component_draws",
+        "expected"
+      ]
+    },
+    "measured_model_result": {
+      "type": "null"
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "stage_knowledge_boundaries",
+    "coverage_gate",
+    "unknown_capacity_cost",
+    "bootstrap_rerank",
+    "measured_model_result"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evaluation boundary specifications"
+}

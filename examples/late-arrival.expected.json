@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "late-arrival",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "History is empty and limited context is visible."
+  ],
+  "forbidden_behaviors": [
+    "Do not confuse occurrence time with availability time."
+  ],
+  "requirement_ids": [
+    "FR04"
+  ],
+  "measured_model_result": null
+}

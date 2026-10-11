@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "case_id": "payroll-hard-negative",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-payroll-a",
+    "syn-pay-payroll-b"
+  ],
+  "eligible_training_label_ids": [
+    "syn-pay-payroll-a",
+    "syn-pay-payroll-b"
+  ],
+  "required_behaviors": [
+    "Retain this as a legitimate challenge and report false-alert burden."
+  ],
+  "forbidden_behaviors": [
+    "Do not hard-code high payment counts as proven fraud."
+  ],
+  "requirement_ids": [
+    "FR09",
+    "FR22"
+  ],
+  "measured_model_result": null
+}

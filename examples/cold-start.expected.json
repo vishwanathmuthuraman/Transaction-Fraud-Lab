@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "case_id": "cold-start",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Return cold-start and missing-device indicators; expose limited context."
+  ],
+  "forbidden_behaviors": [
+    "Do not declare a new customer fraudulent."
+  ],
+  "requirement_ids": [
+    "FR13",
+    "FR19"
+  ],
+  "measured_model_result": null
+}

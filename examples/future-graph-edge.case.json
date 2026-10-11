@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "case_id": "future-graph-edge",
+  "description": "A future edge would create a stronger network motif.",
+  "organization_id": "syn-org-demo",
+  "current_payment_id": "syn-pay-current",
+  "scoring_at": "2026-01-10T10:00:00Z",
+  "training_cutoff": "2026-01-10T09:00:00Z",
+  "observations": [
+    {
+      "payment_id": "syn-pay-prior",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-alfa",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T08:00:00Z",
+      "available_at": "2026-01-10T08:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    },
+    {
+      "payment_id": "syn-pay-current",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-alfa",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T10:00:00Z",
+      "available_at": "2026-01-10T10:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    },
+    {
+      "payment_id": "syn-pay-future-link",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-z",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T11:00:00Z",
+      "available_at": "2026-01-10T11:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    }
+  ],
+  "labels": [],
+  "purpose": "development_specification_not_benchmark"
+}

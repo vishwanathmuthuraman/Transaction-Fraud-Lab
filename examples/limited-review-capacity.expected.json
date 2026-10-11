@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "limited-review-capacity",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "At floor(0.01 times 1), zero reviews are selected; explain empty queue."
+  ],
+  "forbidden_behaviors": [
+    "Do not silently round up to one review and call it a fixed 1 percent budget."
+  ],
+  "requirement_ids": [
+    "FR18"
+  ],
+  "measured_model_result": null
+}

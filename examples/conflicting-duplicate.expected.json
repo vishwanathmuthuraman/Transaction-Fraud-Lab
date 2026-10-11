@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "conflicting-duplicate",
+  "expected_status": "input_error",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Reject conflicting duplicate before scoring."
+  ],
+  "forbidden_behaviors": [
+    "Do not retain whichever row happens to be last."
+  ],
+  "requirement_ids": [
+    "FR05"
+  ],
+  "measured_model_result": null
+}

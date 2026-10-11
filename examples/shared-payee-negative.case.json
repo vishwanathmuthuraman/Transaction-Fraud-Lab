@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "case_id": "shared-payee-negative",
+  "description": "Distinct legitimate senders pay a common merchant.",
+  "organization_id": "syn-org-demo",
+  "current_payment_id": "syn-pay-current",
+  "scoring_at": "2026-01-10T10:00:00Z",
+  "training_cutoff": "2026-01-10T09:00:00Z",
+  "observations": [
+    {
+      "payment_id": "syn-pay-shop-a",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-x",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T08:00:00Z",
+      "available_at": "2026-01-10T08:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    },
+    {
+      "payment_id": "syn-pay-shop-b",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-y",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T09:00:00Z",
+      "available_at": "2026-01-10T09:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    },
+    {
+      "payment_id": "syn-pay-current",
+      "organization_id": "syn-org-demo",
+      "sender_id": "syn-account-alfa",
+      "recipient_id": "syn-account-bravo",
+      "occurred_at": "2026-01-10T10:00:00Z",
+      "available_at": "2026-01-10T10:00:00Z",
+      "amount_minor": 1000,
+      "currency": "GBP",
+      "channel": "account_transfer",
+      "device_id": "syn-device-one"
+    }
+  ],
+  "labels": [
+    {
+      "payment_id": "syn-pay-shop-a",
+      "organization_id": "syn-org-demo",
+      "status": "resolved",
+      "class": "legitimate",
+      "available_at": "2026-01-10T09:00:00Z",
+      "provenance": "original_synthetic_oracle"
+    },
+    {
+      "payment_id": "syn-pay-shop-b",
+      "organization_id": "syn-org-demo",
+      "status": "resolved",
+      "class": "legitimate",
+      "available_at": "2026-01-10T09:00:00Z",
+      "provenance": "original_synthetic_oracle"
+    }
+  ],
+  "purpose": "development_specification_not_benchmark"
+}

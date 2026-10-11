@@ -1,0 +1,17 @@
+{
+  "status": "not_run",
+  "experiment_id": null,
+  "data_hash": null,
+  "model_hash": null,
+  "split_hash": null,
+  "primary_endpoint": null,
+  "observed_value": null,
+  "confidence_interval": null,
+  "baseline_value": null,
+  "label_coverage": null,
+  "failed_runs": null,
+  "limitations": [
+    "No model has been implemented or evaluated."
+  ],
+  "reproduced_by": null
+}

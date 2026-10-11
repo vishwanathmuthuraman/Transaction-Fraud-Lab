@@ -1,0 +1,101 @@
+{
+  "status": "development specifications; no model execution",
+  "cases": [
+    {
+      "id": "ordinary-history",
+      "case": "ordinary-history.case.json",
+      "expected": "ordinary-history.expected.json",
+      "purpose": "One known prior payment and one current payment."
+    },
+    {
+      "id": "future-event",
+      "case": "future-event.case.json",
+      "expected": "future-event.expected.json",
+      "purpose": "A later payment is present in the input file."
+    },
+    {
+      "id": "late-arrival",
+      "case": "late-arrival.case.json",
+      "expected": "late-arrival.expected.json",
+      "purpose": "A prior occurred payment only becomes available after scoring."
+    },
+    {
+      "id": "simultaneous-event",
+      "case": "simultaneous-event.case.json",
+      "expected": "simultaneous-event.expected.json",
+      "purpose": "Another payment shares the current occurrence timestamp."
+    },
+    {
+      "id": "delayed-label",
+      "case": "delayed-label.case.json",
+      "expected": "delayed-label.expected.json",
+      "purpose": "Fraud label becomes known after the fit cutoff."
+    },
+    {
+      "id": "unresolved-label",
+      "case": "unresolved-label.case.json",
+      "expected": "unresolved-label.expected.json",
+      "purpose": "Prior outcome is unresolved."
+    },
+    {
+      "id": "conflicting-duplicate",
+      "case": "conflicting-duplicate.case.json",
+      "expected": "conflicting-duplicate.expected.json",
+      "purpose": "Two records reuse an ID with different amounts."
+    },
+    {
+      "id": "exact-duplicate",
+      "case": "exact-duplicate.case.json",
+      "expected": "exact-duplicate.expected.json",
+      "purpose": "Identical replay occurs twice."
+    },
+    {
+      "id": "cross-organization-context",
+      "case": "cross-organization-context.case.json",
+      "expected": "cross-organization-context.expected.json",
+      "purpose": "Scoring context contains a second organizations account history."
+    },
+    {
+      "id": "mixed-currency",
+      "case": "mixed-currency.case.json",
+      "expected": "mixed-currency.expected.json",
+      "purpose": "Two currencies would enter the same R1 experiment."
+    },
+    {
+      "id": "cold-start",
+      "case": "cold-start.case.json",
+      "expected": "cold-start.expected.json",
+      "purpose": "A new account has no prior history and no device."
+    },
+    {
+      "id": "payroll-hard-negative",
+      "case": "payroll-hard-negative.case.json",
+      "expected": "payroll-hard-negative.expected.json",
+      "purpose": "High legitimate outgoing activity challenges naive velocity rules."
+    },
+    {
+      "id": "shared-payee-negative",
+      "case": "shared-payee-negative.case.json",
+      "expected": "shared-payee-negative.expected.json",
+      "purpose": "Distinct legitimate senders pay a common merchant."
+    },
+    {
+      "id": "future-graph-edge",
+      "case": "future-graph-edge.case.json",
+      "expected": "future-graph-edge.expected.json",
+      "purpose": "A future edge would create a stronger network motif."
+    },
+    {
+      "id": "censored-observation",
+      "case": "censored-observation.case.json",
+      "expected": "censored-observation.expected.json",
+      "purpose": "The current outcome has not matured by observation end."
+    },
+    {
+      "id": "limited-review-capacity",
+      "case": "limited-review-capacity.case.json",
+      "expected": "limited-review-capacity.expected.json",
+      "purpose": "A one-payment daily cohort at a 1 percent floor budget has K zero."
+    }
+  ]
+}

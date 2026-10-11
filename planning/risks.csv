@@ -1,0 +1,13 @@
+id,risk,severity,failure,mitigation,owner,status
+RK01,Temporal leakage,High,Future labels or edges make impossible performance look strong.,"As-of joins, pre-batch snapshots and leak-trap tests.",Data engineer,open
+RK02,Synthetic shortcut,High,"Simulator branch, ID or row ordering reveals truth.","Hide generator metadata, overlap distributions and test a changed generator.",Research engineer,open
+RK03,False accusation,High,A signal is interpreted as confirmed fraud.,"Review-priority language, evidence and uncertainty; no external action.",Product lead,open
+RK04,Selection bias,High,Only reviewed payments receive reliable labels.,"Model label selection, show coverage, keep unknown outcomes and avoid deployment claims.",Research lead,open
+RK05,Graph contamination,High,Cross-org or future edges reveal unavailable information.,Scope keys and availability constraints; separate cold-component experiment.,Data engineer,open
+RK06,Queue mismatch,Medium,Batch top-K is mistaken for online intervention.,Name batch scope; separate streaming policy experiment.,Research lead,open
+RK07,Metric misuse,High,"Accuracy, ROC-AUC or balanced evaluation hides false positives.","Natural prevalence, AP, fixed-capacity metrics and burden counts.",Reviewer,open
+RK08,Publication overshare,High,Full operational data or strategy enters public version.,Explicit export boundary and no real data in R1.,Maintainer,open
+RK09,Dataset target mismatch,Medium,Account-opening dataset is presented as payment-fraud validation.,Separate experiment and clear task definition.,Research lead,open
+RK10,Dependency or artifact attack,Medium,Untrusted model file executes code or report renders HTML.,"Trusted provenance, constrained formats and escaping.",Backend engineer,open
+RK11,Unstable subgroup inference,Medium,Tiny samples generate broad fairness claims.,"Counts, uncertainty and exploratory labels.",Reviewer,open
+RK12,Overengineering,Medium,GNN or multi-language stack delays a testable result.,Baselines and profiling before expansion.,Engineering lead,open

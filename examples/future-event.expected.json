@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "future-event",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Exclude the future payment from history."
+  ],
+  "forbidden_behaviors": [
+    "Do not build history from full-file aggregates."
+  ],
+  "requirement_ids": [
+    "FR04"
+  ],
+  "measured_model_result": null
+}

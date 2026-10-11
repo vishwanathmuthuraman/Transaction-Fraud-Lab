@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "delayed-label",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Prior payment can inform unlabeled history; its label cannot inform training yet."
+  ],
+  "forbidden_behaviors": [
+    "Do not use label class because it exists in the final oracle file."
+  ],
+  "requirement_ids": [
+    "FR06"
+  ],
+  "measured_model_result": null
+}

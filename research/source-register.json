@@ -1,0 +1,150 @@
+{
+  "reviewed_on": "2026-10-11",
+  "scope": "Selected primary sources; not exhaustive literature review",
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "FATF",
+      "title": "Cyber-enabled fraud: digitalisation and ML/TF/PF risks",
+      "published_date": "2026-02-24",
+      "url": "https://www.fatf-gafi.org/en/publications/Methodsandtrends/cyber-enabled-fraud-digitalisation-ml-tf-pf-risks.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Fraud and movement of proceeds are related but require different analytical and institutional responses.",
+      "design_inference": "Separate payment-fraud target from AML suspicion; no automated allegations.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S02",
+      "publisher": "BIS Innovation Hub",
+      "title": "Project Hertha",
+      "published_date": "2025-06-05",
+      "url": "https://www.bis.org/project/hertha",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Payment-network analytics were studied using a synthetic payment ecosystem and have practical limitations.",
+      "design_inference": "Compare local graph information as an experiment; synthetic success is not production evidence.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S03",
+      "publisher": "BIS Innovation Hub",
+      "title": "Project Hertha report",
+      "published_date": "2025-06-05",
+      "url": "https://www.bis.org/publ/othp96.pdf",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Research compares detection under a fixed target rate and examines known versus unseen patterns.",
+      "design_inference": "Use fixed review capacity and held-out behavior experiments, with independent model baselines.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S04",
+      "publisher": "BIS / PIE task force contributors",
+      "title": "Enhancing cross-border payments: addressing fraud",
+      "published_date": "2026-02",
+      "url": "https://www.bis.org/cpmi/pietf/fraud_report_2026.pdf",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Report discusses fraud prevention initiatives and information sharing; contributor views are not blanket BIS endorsement.",
+      "design_inference": "Treat network access and collaboration as separate constraints rather than assuming full visibility.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary report search excerpt reviewed; direct PDF opening failed. Broad context only, no report statistic used."
+    },
+    {
+      "id": "S05",
+      "publisher": "BIS working-paper authors",
+      "title": "Finding a needle in a haystack",
+      "published_date": "2024-05-15",
+      "url": "https://www.bis.org/publications/working-paper-1188-finding-needle-haystack-machine-learning-framework-anomaly-detection-payment-systems",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "High-value payment anomaly research distinguishes typical payments from unusual transactions.",
+      "design_inference": "Anomaly scores are useful baselines, but unusual is not a confirmed fraud label.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S06",
+      "publisher": "Fraud Detection Handbook authors",
+      "title": "Validation strategies",
+      "published_date": null,
+      "url": "https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_5_ModelValidationAndSelection/ValidationStrategies.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Forward evaluation incorporates feedback delay and nonstationary behavior.",
+      "design_inference": "Use chronological splits and as-of label eligibility.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S07",
+      "publisher": "Fraud Detection Handbook authors",
+      "title": "Baseline fraud detection system",
+      "published_date": null,
+      "url": "https://fraud-detection-handbook.github.io/fraud-detection-handbook/Chapter_3_GettingStarted/BaselineModeling.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Real label discovery delays vary; a fixed delay is a simplification.",
+      "design_inference": "Model a distribution of delays and explicit unresolved outcomes.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S08",
+      "publisher": "Jesus et al. / NeurIPS",
+      "title": "Turning the Tables: Biased, Imbalanced, Dynamic Tabular Datasets",
+      "published_date": "2022",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2022/hash/d9696563856bd350e4e7ac5e5812f23c-Abstract-Datasets_and_Benchmarks.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "BAF is an account-opening fraud dataset suite designed for temporal dynamics, imbalance and bias evaluation.",
+      "design_inference": "Optional distinct target extension; never claim payment-fraud validation from BAF alone.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S09",
+      "publisher": "Feedzai",
+      "title": "Bank Account Fraud dataset repository",
+      "published_date": null,
+      "url": "https://github.com/Feedzai/bank-account-fraud",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Official supporting repository describes access and usage context for BAF.",
+      "design_inference": "Check actual data license and provenance before a future download; do not redistribute now.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S10",
+      "publisher": "scikit-learn maintainers",
+      "title": "Common pitfalls and recommended practices",
+      "published_date": null,
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Fitting transformations on held-out data leaks information into evaluation.",
+      "design_inference": "Use train-only pipeline fitting and explicit leakage regression tests.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S11",
+      "publisher": "scikit-learn maintainers",
+      "title": "average_precision_score reference",
+      "published_date": null,
+      "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Average precision is a defined noninterpolated summary of precision-recall performance.",
+      "design_inference": "Name AP precisely and distinguish trapezoidal PR area.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    },
+    {
+      "id": "S12",
+      "publisher": "Bank of England and FCA",
+      "title": "Machine learning in UK financial services",
+      "published_date": "2022-10-11",
+      "url": "https://www.bankofengland.co.uk/report/2022/machine-learning-in-uk-financial-services",
+      "accessed_on": "2026-10-11",
+      "claim_supported": "Survey respondents discussed fraud use cases, data governance, explainability and integration constraints.",
+      "design_inference": "Design interpretable evidence and realistic integration boundaries rather than citing adoption as customer demand.",
+      "limitations": "Source does not validate or endorse this project; quoted performance is not reused as a project result.",
+      "review_method": "Primary page or primary indexed excerpt reviewed; no licensed source data imported."
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "payment_id",
+    "organization_id",
+    "sender_id",
+    "recipient_id",
+    "occurred_at",
+    "available_at",
+    "amount_minor",
+    "currency",
+    "channel",
+    "device_id"
+  ],
+  "properties": {
+    "payment_id": {
+      "type": "string",
+      "pattern": "^syn-pay-"
+    },
+    "organization_id": {
+      "type": "string",
+      "pattern": "^syn-org-"
+    },
+    "sender_id": {
+      "type": "string",
+      "pattern": "^syn-account-"
+    },
+    "recipient_id": {
+      "type": "string",
+      "pattern": "^syn-account-"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "available_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "amount_minor": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "currency": {
+      "enum": [
+        "GBP",
+        "INR",
+        "USD"
+      ]
+    },
+    "channel": {
+      "enum": [
+        "account_transfer"
+      ]
+    },
+    "device_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

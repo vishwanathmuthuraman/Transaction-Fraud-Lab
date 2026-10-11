@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "case_id": "shared-payee-negative",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-shop-a",
+    "syn-pay-shop-b"
+  ],
+  "eligible_training_label_ids": [
+    "syn-pay-shop-a",
+    "syn-pay-shop-b"
+  ],
+  "required_behaviors": [
+    "Graph history can include eligible edges; common payee is contextual evidence only."
+  ],
+  "forbidden_behaviors": [
+    "Do not treat shared merchant connectivity as proof."
+  ],
+  "requirement_ids": [
+    "FR09",
+    "FR14"
+  ],
+  "measured_model_result": null
+}

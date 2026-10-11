@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-11T12:16:16.441619+00:00",
+  "scope": "Documentation consistency only; no application or predictive benchmark executed",
+  "requirements": 30,
+  "edition": "curated_public_specification",
+  "internal_delivery_plan_included": false,
+  "planned_acceptance_tests": 56,
+  "synthetic_case_pairs": 16,
+  "evaluation_boundary_specifications": 7,
+  "schemas": 5,
+  "sources": 12,
+  "local_markdown_links_checked": 59,
+  "checks": 214,
+  "application_implemented": false,
+  "model_performance_measured": false,
+  "git_initialized": true
+}

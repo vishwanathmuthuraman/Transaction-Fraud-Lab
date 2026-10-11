@@ -1,0 +1,19 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+private/
+data/raw/
+data/customer/
+artifacts/
+models/
+*.pem
+*.key
+
+# Full internal handoffs remain outside the public package.
+BLUEPRINT.html
+planning/tasks.csv
+planning/estimate-summary.json

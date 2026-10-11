@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "future-graph-edge",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Only one prior graph edge is eligible."
+  ],
+  "forbidden_behaviors": [
+    "Do not compute full-period centrality before temporal splitting."
+  ],
+  "requirement_ids": [
+    "FR14"
+  ],
+  "measured_model_result": null
+}

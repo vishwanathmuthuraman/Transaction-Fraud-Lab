@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "case_id": "censored-observation",
+  "expected_status": "valid_input",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Count current prediction as unresolved if final observation has no label."
+  ],
+  "forbidden_behaviors": [
+    "Do not count it as a confirmed false positive or missed fraud."
+  ],
+  "requirement_ids": [
+    "FR07",
+    "FR20"
+  ],
+  "measured_model_result": null
+}

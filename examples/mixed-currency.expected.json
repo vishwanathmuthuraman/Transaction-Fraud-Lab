@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "mixed-currency",
+  "expected_status": "input_error",
+  "eligible_history_ids": [],
+  "eligible_training_label_ids": [],
+  "required_behaviors": [
+    "Reject unsupported mixed-currency experiment."
+  ],
+  "forbidden_behaviors": [
+    "Do not sum USD and GBP minor units."
+  ],
+  "requirement_ids": [
+    "FR03"
+  ],
+  "measured_model_result": null
+}
