@@ -1,13 +1,13 @@
 id,requirement_ids,title,expected_behavior,status,evidence
-AT01,FR01,Malformed input rejected,Unknown schema version or extra field causes explicit input error with no output scores.,not_started,
-AT02,FR03,Integer and currency safety,"Float amount, negative amount or implicit cross-currency aggregate is rejected.",not_started,
-AT03,FR02,Organization collision,Same account ID in another organization contributes zero features and zero evidence.,not_started,
-AT04,FR05,Duplicate replay,Identical ID/payload replay changes neither counts nor amount sums.,not_started,
-AT05,FR05,Conflicting duplicate,Same payment ID with different amount fails validation.,not_started,
-AT06,FR04,Future occurrence,Later payment is unavailable to an earlier score even if stored in the same file.,not_started,
-AT07,FR04,Late availability,Earlier occurred event available after scoring is excluded.,not_started,
-AT08,FR04,Equal time,Equal occurrence-time events use identical pre-batch snapshot.,not_started,
-AT09,FR06,Late label,Resolved fraud label arriving after training cutoff cannot enter training.,not_started,
+AT01,FR01,Malformed input rejected,Unknown schema version or extra field causes explicit input error with no output scores.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT02,FR03,Integer and currency safety,"Float amount, negative amount or implicit cross-currency aggregate is rejected.",in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT03,FR02,Organization collision,Same account ID in another organization contributes zero features and zero evidence.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT04,FR05,Duplicate replay,Identical ID/payload replay changes neither counts nor amount sums.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT05,FR05,Conflicting duplicate,Same payment ID with different amount fails validation.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT06,FR04,Future occurrence,Later payment is unavailable to an earlier score even if stored in the same file.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT07,FR04,Late availability,Earlier occurred event available after scoring is excluded.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT08,FR04,Equal time,Equal occurrence-time events use identical pre-batch snapshot.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT09,FR06,Late label,Resolved fraud label arriving after training cutoff cannot enter training.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
 AT10,FR07,Unknown is unknown,Unresolved labels remain outside binary metric denominator with count shown.,not_started,
 AT11,FR07,Censored evaluation,Insufficient maturity stops primary result claim and shows coverage.,not_started,
 AT12,FR08,Deterministic generator,Same seed/config reproduces canonical data hash; changed seed changes hash.,not_started,
@@ -17,14 +17,14 @@ AT15,FR10,Chronology,Every train/model-selection/calibration/policy/test row mee
 AT16,FR11,Component isolation,Strict entity experiment has no shared actor/payee/device IDs or cross-split edges.,not_started,
 AT17,FR12,Preprocessing leak trap,Extreme held-out values cannot change fitted training imputer or scaler.,not_started,
 AT18,FR12,Evaluation prevalence,Resampling cannot change evaluation row counts or prevalence.,not_started,
-AT19,FR13,Behavior arithmetic,"Hand-calculated prior count, sum, novelty and empty-history indicator match.",not_started,
-AT20,FR14,Graph time trap,Future common-payee edge cannot affect historical score features.,not_started,
+AT19,FR13,Behavior arithmetic,"Hand-calculated prior count, sum, novelty and empty-history indicator match.",in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
+AT20,FR14,Graph time trap,Future common-payee edge cannot affect historical score features.,in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
 AT21,FR14,Shared merchant,Legitimate common merchant motif has no categorical guilt rule.,not_started,
 AT22,FR15,Baseline parity,All baselines produce one typed result for each same eligible input or explicit error.,not_started,
 AT23,FR16,Equal budget,Candidate search count and development access do not exceed preregistered baseline budget.,not_started,
 AT24,FR17,Calibration isolation,Changing test labels cannot change calibrator or probabilities.,not_started,
 AT25,FR17,Score semantics,Uncalibrated anomaly output is labeled anomaly_score and never probability.,not_started,
-AT26,FR18,Queue capacity,"For N eligible rows with K capacity, exactly min(N,K) rank slots when top-K mode enabled.",not_started,
+AT26,FR18,Queue capacity,"For N eligible rows with K capacity, exactly min(N,K) rank slots when top-K mode enabled.",in_progress,Initial component evidence: docs/IMPLEMENTATION.md; tests/test_core.py; reports/initial-implementation/verification.json. Full acceptance boundary remains pending.
 AT27,FR18,Stable ties,Identical risk values sort by the frozen hash tie-break independent of input row order.,not_started,
 AT28,FR19,Evidence integrity,Every cited event is in same scope and eligible at scoring time; no label evidence appears.,not_started,
 AT29,FR19,Uncertainty language,New account or missing device returns limited_context and no allegation.,not_started,

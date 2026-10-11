@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at": "2026-10-11T12:16:16.441619+00:00",
+  "checked_at": "2026-10-11T13:36:33.185428+00:00",
   "scope": "Documentation consistency only; no application or predictive benchmark executed",
   "requirements": 30,
   "edition": "curated_public_specification",
@@ -10,9 +10,10 @@
   "evaluation_boundary_specifications": 7,
   "schemas": 5,
   "sources": 12,
-  "local_markdown_links_checked": 59,
-  "checks": 214,
-  "application_implemented": false,
+  "local_markdown_links_checked": 78,
+  "checks": 234,
+  "full_application_implemented": false,
+  "implementation_evidence": "reports/initial-implementation/verification.json",
   "model_performance_measured": false,
   "git_initialized": true
 }

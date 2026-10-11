@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "kind": "as_of_feature_snapshot",
+  "organization_id": "syn-org-demo",
+  "payment_id": "syn-pay-current",
+  "scoring_at": "2026-01-10T10:00:00Z",
+  "currency": "GBP",
+  "eligible_history_ids": [
+    "syn-pay-prior"
+  ],
+  "features": {
+    "sender_count_24h": 1,
+    "sender_amount_24h_minor": 1000,
+    "sender_history_count": 1,
+    "recipient_new_to_sender": false,
+    "recipient_prior_sender_count": 1,
+    "cold_start": false
+  },
+  "predictive_model_implemented": false
+}

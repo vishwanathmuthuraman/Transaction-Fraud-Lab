@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "scope": "initial_offline_components_only",
+  "verified_at": "2026-10-11T13:37:21.362567+00:00",
+  "python": "3.12.13",
+  "platform": "Darwin",
+  "package_version": "0.1.0",
+  "clean_wheel_install": true,
+  "wheel_run_outside_checkout": true,
+  "schemas_loaded_from_installed_wheel": true,
+  "behavioral_tests": {
+    "command": "python -m pytest -q tests",
+    "passed": 36,
+    "failed": 0
+  },
+  "ruff": {
+    "lint": "passed",
+    "format": "passed"
+  },
+  "uv_lock_sha256": "bc7697c21ba51db6b330e77bdd44902d0911a65a2fcfc976f7ab74f57b4c3090",
+  "implementation_files_sha256": {
+    "src/transaction_fraud_lab/__init__.py": "567facf79bbbd56a4b5bc1f80b4df6967d1e573100fdc680ab6591a658e3e77f",
+    "src/transaction_fraud_lab/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/transaction_fraud_lab/cli.py": "25024014eafb5ea5cc460ca0abf140784af316cf03e6ed4ef4c8c8b393ad0e7b",
+    "src/transaction_fraud_lab/common.py": "38c64e19f828112a4e547fd08da3f3d1a9d1ccd21cfe01f797d6bf884c300287",
+    "src/transaction_fraud_lab/core.py": "a7107b5b8a94bb531bec7b27f0ab0a36515c0557dd5965004d4978d43cc3206d",
+    "tests/test_cli.py": "aba8e4a9167c7e021cffdd06e5bd38b33ecbeb4ad95455816ae42746d64b3bff",
+    "tests/test_core.py": "bc2e07e7a13ae32ddb18e69552bbb5e96158894a70287d4cc1e30f6ca29bce40",
+    "schemas/case.schema.json": "2e19db58c23b845b541d15e4d6d3463e87a2d557c8875476e7a2d5687ca6f4c5",
+    "schemas/evaluation-boundaries.schema.json": "96b2cdfb8fb830bde2cbbc9289db6cb95328b85700ee3a09a28efd2cbfd3f1a6",
+    "schemas/expected.schema.json": "bdf8be478a9babf6245a435a46fbb96942eb71aef2069320e6a874fb9fdee5ef",
+    "schemas/label.schema.json": "152826ba7454256950e5525377735466e4d2ae8b14af021786b5f84cbc2797b7",
+    "schemas/payment.schema.json": "999015de881b486e3199dde207715d1b119316ba4d5daa2b83e3249d224b4df4",
+    "pyproject.toml": "7f9cc33f53f72ca78886717e6bd48ab23396b5cdbe1df971357b9b21cc512782",
+    "uv.lock": "bc7697c21ba51db6b330e77bdd44902d0911a65a2fcfc976f7ab74f57b4c3090",
+    ".python-version": "aa0d6581054e6e4ff3f91839deca7a854ad37221b8784d060b42d0f847ff1a3b"
+  },
+  "demos": [
+    {
+      "input": "examples/ordinary-history.case.json",
+      "input_sha256": "c414c2b08926a8da0b6c4db3b2fc2cb5af453cfa588483225e2a7cd14604a941",
+      "command": "fraud-lab features examples/ordinary-history.case.json",
+      "exit_code": 0,
+      "output": "demo-1.json",
+      "output_sha256": "ade22b69be4ffc13bbb679cdd853072dc68eade3fe686ac3deac39ba55540a4a"
+    }
+  ],
+  "held_out_benchmark_executed": false,
+  "production_validated": false,
+  "limits": [
+    "Development fixtures and boundary tests only.",
+    "No predictive model or customer outcome is evaluated.",
+    "No live provider action is taken."
+  ]
+}

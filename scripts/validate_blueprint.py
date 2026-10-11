@@ -18,7 +18,8 @@ req=rows('planning/requirements.csv');tests=rows('planning/acceptance-tests.csv'
 reqids={r['id'] for r in req}
 check(len(reqids)==len(req),'Unique requirement IDs')
 check(len({r['id'] for r in tests})==len(tests),'Unique acceptance IDs')
-check(all(x['status']=='not_started' for x in tests),'Planned application tests remain honestly unstarted')
+check(all(x['status'] in {'not_started','in_progress','complete'} for x in tests),'Unknown acceptance status')
+check(all(x['status']=='not_started' or x['evidence'].strip() for x in tests),'Progress needs an evidence reference')
 check(set(' '.join(t['requirement_ids'] for t in tests).split())==reqids,'Every requirement maps to an acceptance test')
 check(not (ROOT/'planning/tasks.csv').exists(),'Internal task schedule is excluded from this public edition')
 check(not (ROOT/'planning/estimate-summary.json').exists(),'Internal effort estimates are excluded from this public edition')
@@ -105,6 +106,6 @@ for md in ROOT.rglob('*.md'):
 sources=read_json('research/source-register.json')['sources']
 check(len({s['id'] for s in sources})==len(sources),'Unique source IDs')
 check(all(urlparse(s['url']).scheme=='https' and s['claim_supported'] and s['design_inference'] for s in sources),'Source register has direct URLs, claims and separate inferences')
-report={'status':'passed','checked_at':datetime.now(timezone.utc).isoformat(),'scope':'Documentation consistency only; no application or predictive benchmark executed','requirements':len(req),'edition':'curated_public_specification','internal_delivery_plan_included':False,'planned_acceptance_tests':len(tests),'synthetic_case_pairs':len(idx),'evaluation_boundary_specifications':7,'schemas':5,'sources':len(sources),'local_markdown_links_checked':link_count,'checks':len(checks),'application_implemented':False,'model_performance_measured':False,'git_initialized':(ROOT/'.git').exists()}
+report={'status':'passed','checked_at':datetime.now(timezone.utc).isoformat(),'scope':'Documentation consistency only; no application or predictive benchmark executed','requirements':len(req),'edition':'curated_public_specification','internal_delivery_plan_included':False,'planned_acceptance_tests':len(tests),'synthetic_case_pairs':len(idx),'evaluation_boundary_specifications':7,'schemas':5,'sources':len(sources),'local_markdown_links_checked':link_count,'checks':len(checks),'full_application_implemented':False,'implementation_evidence':'reports/initial-implementation/verification.json','model_performance_measured':False,'git_initialized':(ROOT/'.git').exists()}
 (ROOT/'docs/blueprint-validation.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

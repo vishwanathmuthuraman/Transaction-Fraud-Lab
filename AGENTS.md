@@ -1,6 +1,6 @@
 # Project working instructions
 
-This folder contains a research and implementation blueprint, not a trained fraud detector. Read README.md and docs/01-product-requirements.md through docs/05-definition-of-done.md before implementing. Application commands shown in docs are future interfaces. Documentation scripts are the only currently implemented tooling.
+This folder contains a research and implementation blueprint, not a trained fraud detector. Read README.md and docs/01-product-requirements.md through docs/05-definition-of-done.md before implementing. Only the commands in README.md and docs/IMPLEMENTATION.md are implemented interfaces; other product/training commands remain future targets.
 
 ## Research and implementation discipline
 

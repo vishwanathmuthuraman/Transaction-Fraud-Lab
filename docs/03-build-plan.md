@@ -1,6 +1,6 @@
 # 03 — Research milestones
 
-This public roadmap describes the evidence needed to progress from a research specification to an evaluated implementation. The detector, simulator, training pipeline and report remain unimplemented. Documentation validation checks the authored contracts and synthetic specifications; it does not establish predictive performance.
+Initial offline components are implemented and verified. See [component progress and actual evidence](IMPLEMENTATION.md). Contracts/eligibility and candidate feature/queue milestones have partial evidence. Generator, trained baselines, calibration, entity splits, evaluation metrics and frozen evaluation remain pending. The milestones below retain their complete acceptance boundaries.
 
 | Milestone | Public deliverable | Evidence required to advance | Current status |
 | --- | --- | --- | --- |

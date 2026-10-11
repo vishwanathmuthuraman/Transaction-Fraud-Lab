@@ -17,3 +17,22 @@ models/
 BLUEPRINT.html
 planning/tasks.csv
 planning/estimate-summary.json
+
+# Python implementation artifacts.
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+outputs/
+*.sqlite*
+.wheel-check/
+.wheel-requirements.txt
+
+# Reviewed synthetic implementation evidence only.
+reports/*
+!reports/initial-implementation/
+reports/initial-implementation/*
+!reports/initial-implementation/verification.json
+!reports/initial-implementation/demo-*.json
