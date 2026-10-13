@@ -15,7 +15,7 @@ A payment may look unusual and still be legitimate. This project asks whether a 
 | Examples | Original synthetic cases and expected behavior specifications |
 | Validation | 36 executed component/CLI tests plus separate documentation integrity checks |
 | Implementation | Initial payment features, label-eligibility helper and offline bounded queue; trained model and benchmark pending |
-| Distribution | Curated public research specification; license selection pending |
+| Distribution | Curated public research; Apache-2.0 for original repository material |
 
 ## Run the initial implementation
 
@@ -75,6 +75,10 @@ See [source rationale](docs/06-sources-and-design-rationale.md) for the primary 
 
 ## Public package
 
-This edition includes original synthetic examples, contracts, evaluation methods, source rationale and public milestones. Internal task schedules and effort estimates are maintained outside the repository. Initial component source and verification are included; trained algorithm results remain pending. License selection is pending; no code, documentation or data license grant is supplied.
+This edition includes original synthetic examples, contracts, evaluation methods, source rationale and public milestones. Internal task schedules and effort estimates are maintained outside the repository. Initial component source and verification are included; trained algorithm results remain pending. Original code, documentation and synthetic fixtures are licensed under Apache-2.0; see LICENSE and NOTICE. Third-party material retains its own terms.
 
 Maintained by [Vishwanath Muthuraman](https://github.com/vishwanathmuthuraman). [Contribution guidance](CONTRIBUTING.md) explains how to propose a synthetic case or challenge a design assumption.
+
+## License
+
+Original repository material is licensed under [Apache-2.0](LICENSE). See [licensing and attribution](docs/09-licensing.md) for scope, third-party material and distribution requirements.
