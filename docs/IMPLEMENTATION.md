@@ -28,6 +28,14 @@ Observed demo: The ordinary-history command emits the eligible prior payment IDs
 
 [Captured output](../reports/initial-implementation/demo-1.json). Test use of authored expected files is restricted to development assertions; application code does not open them. These are component regressions, not independent held-out evaluation or performance measurements.
 
+## Synthetic generator and chronological partitions (step 1, partial)
+
+Module [synthetic](../src/transaction_fraud_lab/synthetic.py), tests in [test_synthetic](../tests/test_synthetic.py). Implemented: a seeded (`random.Random`) generator of original synthetic payments in integer minor units, returned as three separate tables (payments with no class field, oracle labels with delayed availability and unresolved outcomes, and a pattern audit); legitimate hard negatives (new customers, payroll fan-out, high-value purchases) alongside an authored burst pattern; `partition_chronological` by occurrence time with strictly increasing, start-inclusive boundaries; `audit_partitions`, which reports cold senders per partition and, at each partition end, labels known, unresolved and not yet available, and rejects empty partitions, duplicate or missing label records and labels available before occurrence.
+
+Commands run: `uv run --locked ruff format --check src tests`, `ruff check src tests`, `pytest` and both documentation scripts. Observed: 43 tests passed (7 new), lint and format passed, documentation checks passed.
+
+Remaining limits: the generator patterns are authored assumptions, not reviewed against real data, and the fraud-like burst pattern is a toy. No CLI command, cold-entity split experiment, baseline or metric exists. Nothing here shows that results on synthetic data generalize to real fraud.
+
 ## Relationship to the full plan
 
 Contracts/eligibility and candidate feature/queue milestones have partial evidence. Generator, trained baselines, calibration, entity splits, evaluation metrics and frozen evaluation remain pending.
