@@ -21,8 +21,8 @@ A payment may look unusual and still be legitimate. This project asks whether a 
 | --- | --- |
 | Design | Requirements, architecture, public milestones and evaluation protocol |
 | Examples | Original synthetic cases and expected behavior specifications |
-| Validation | 36 executed component/CLI tests plus separate documentation integrity checks |
-| Implementation | Initial payment features, label-eligibility helper and offline bounded queue; trained model and benchmark pending |
+| Validation | 51 executed component/CLI tests plus separate documentation integrity checks |
+| Implementation | Payment features, label eligibility, bounded queue, seeded generator and chronological audit; trained model and benchmark pending |
 | Distribution | Curated public research; Apache-2.0 for original repository material |
 
 This is the public research project previously called **Transaction Fraud Lab**. The repository URL, Python package and CLI commands remain unchanged.
@@ -39,7 +39,9 @@ uv run --locked pytest
 
 The CLI prints JSON. `validate` checks the same input contract; invalid or unsupported input returns exit code 2 with a JSON error on stderr. Successful inspection returns exit code 0.
 
-**Verified locally:** 36 behavioral/CLI tests, Ruff checks, and an installed wheel executed outside the checkout. See [completed tasks and next steps](docs/IMPLEMENTATION.md), [the actual verification record](reports/initial-implementation/verification.json) and [captured demo output](reports/initial-implementation/demo-1.json). This evidence covers the initial offline components; the full study remains pending.
+**Initial verification:** 36 behavioral/CLI tests, Ruff checks, and an installed wheel executed outside the checkout. The [original verification record](reports/initial-implementation/verification.json) and [captured demo output](reports/initial-implementation/demo-1.json) retain that historical evidence.
+
+**Current component checks:** 51 tests pass, including eight regressions for chronological membership, organization scope and label timing. The [seeded generator](src/transaction_fraud_lab/synthetic.py) returns payment, label and pattern-audit tables separately. Its Python functions support chronological splits and a validated availability audit; there is no generator CLI yet. See [implemented behavior and limits](docs/IMPLEMENTATION.md). No trained model or empirical fraud benchmark is claimed.
 
 ## The research question
 
@@ -69,7 +71,7 @@ flowchart LR
 
 [Reading guide](START-HERE.md) · [Engineering policy](ENGINEERING.md) · [Requirements](docs/01-product-requirements.md) · [Public milestones](docs/03-build-plan.md) · [Evaluation](docs/04-evaluation.md)
 
-Initial Python feature and queue components are implemented. The complete training/evaluation pipeline remains planned. Rust is an optional future inference component only if measurements justify it. There is no live-payment integration, autonomous payment blocking or allegation generation.
+Initial Python feature, queue, seeded generation and chronological audit components are implemented. The complete training/evaluation pipeline remains planned. Rust is an optional future inference component only if measurements justify it. There is no live-payment integration, autonomous payment blocking or allegation generation.
 
 ## Run the documentation checks
 
