@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at": "2026-10-11T13:36:33.185428+00:00",
+  "checked_at": "2026-10-13T10:02:22.311779+00:00",
   "scope": "Documentation consistency only; no application or predictive benchmark executed",
   "requirements": 30,
   "edition": "curated_public_specification",
@@ -10,8 +10,8 @@
   "evaluation_boundary_specifications": 7,
   "schemas": 5,
   "sources": 12,
-  "local_markdown_links_checked": 78,
-  "checks": 234,
+  "local_markdown_links_checked": 83,
+  "checks": 239,
   "full_application_implemented": false,
   "implementation_evidence": "reports/initial-implementation/verification.json",
   "model_performance_measured": false,

@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/overview.svg" alt="Transaction Fraud Lab — evidence before accusation; behavior, timing and reviewer capacity" width="100%"></p>
+<p align="center"><img src="assets/overview.svg" alt="PayTelltale — evidence before accusation; behavior, timing and reviewer capacity" width="100%"></p>
 
-# Transaction Fraud Lab
+# PayTelltale — Payment fraud detection research
 
 [![Documentation integrity](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml)
 [![Implementation checks](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml)
@@ -16,6 +16,8 @@ A payment may look unusual and still be legitimate. This project asks whether a 
 | Validation | 36 executed component/CLI tests plus separate documentation integrity checks |
 | Implementation | Initial payment features, label-eligibility helper and offline bounded queue; trained model and benchmark pending |
 | Distribution | Curated public research; Apache-2.0 for original repository material |
+
+This is the public research project previously called **Transaction Fraud Lab**. The repository URL, Python package and CLI commands remain unchanged.
 
 ## Run the initial implementation
 

@@ -1,6 +1,6 @@
 # Licensing and attribution
 
-Decision recorded on 13 October 2026 for Transaction Fraud Lab.
+Decision recorded on 13 October 2026 for PayTelltale.
 
 The maintainer selected the [Apache License, Version 2.0](../LICENSE) for original code, documentation, schemas, original visual assets and synthetic fixtures in this curated public repository. The [NOTICE](../NOTICE) identifies the attribution. This permissive license supports reuse, modification and redistribution and includes the patent grant defined by the license. It does not imply foundation affiliation, endorsement, product certification or production readiness.
 
