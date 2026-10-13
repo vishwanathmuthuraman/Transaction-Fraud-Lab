@@ -1,9 +1,17 @@
-<p align="center"><img src="assets/overview.svg" alt="PayTelltale — evidence before accusation; behavior, timing and reviewer capacity" width="100%"></p>
+<p align="center"><img src="docs/assets/brand/logo.svg" width="88" height="88" alt="PayTelltale logo"></p>
 
 # PayTelltale — Payment fraud detection research
 
-[![Documentation integrity](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml)
+<p align="center"><img src="docs/assets/brand/banner.svg" width="100%" alt="PayTelltale: Read payment patterns. Respect the unknowns. Temporal features, Delayed feedback, Review capacity. Offline research components."></p>
+
 [![Implementation checks](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square)](pyproject.toml)
+[![Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-68b89b?style=flat-square)](LICENSE)
+[![Documentation integrity](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml)
+
+[Quick start](#run-the-initial-implementation) · [Implemented scope](docs/IMPLEMENTATION.md) · [Architecture](docs/02-architecture.md) · [Evaluation](docs/04-evaluation.md) · [Contribute](CONTRIBUTING.md)
+
+---
 
 **An evidence-first research plan for ranking suspicious payments under delayed feedback and limited reviewer capacity.**
 
