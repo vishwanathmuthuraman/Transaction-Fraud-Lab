@@ -4,6 +4,7 @@ import random
 from datetime import datetime, timedelta, timezone
 
 from .common import ContractError, exact_integer, timestamp, validate_shape
+from .core import admit_payments
 
 ORIGIN = datetime(2026, 1, 1, tzinfo=timezone.utc)
 PARTITIONS = ("train", "validation", "test")
@@ -22,7 +23,7 @@ def generate(seed, organization_id="syn-org-generated", sender_count=40, days=60
     exact_integer(seed, minimum=0)
     exact_integer(sender_count, minimum=1, maximum=2000)
     exact_integer(days, minimum=14, maximum=365)
-    if not organization_id.startswith("syn-org-"):
+    if not isinstance(organization_id, str) or not organization_id.startswith("syn-org-"):
         raise ContractError("organization must be synthetic")
     rng = random.Random(seed)
     recipients = [f"syn-account-r{k:04d}" for k in range(max(8, sender_count // 2))]
@@ -108,6 +109,13 @@ def partition_chronological(payments, validation_start, test_start):
     if first >= second:
         raise ContractError("partition boundaries must be strictly increasing")
     result = {name: [] for name in PARTITIONS}
+    payments = list(payments)
+    if payments:
+        validate_shape(payments[0], "payment")
+        # Reuse scoring admission: one organization/currency, valid money and times.
+        admitted = admit_payments(payments, payments[0]["organization_id"])
+        if len(admitted) != len(payments):
+            raise ContractError("duplicate payment identity")
     seen = set()
     for row in payments:
         validate_shape(row, "payment")
@@ -121,23 +129,39 @@ def partition_chronological(payments, validation_start, test_start):
 
 
 def audit_partitions(partitions, labels, validation_start, test_start):
-    """Report entity lineage, label availability and hard-negative coverage; fail on leakage.
+    """Validate chronological membership and report cold senders and label availability.
 
     Raises when a partition is empty. Label availability is reported against the
     boundary that ends the preceding partition, so unresolved or late labels are
     counted rather than treated as known.
     """
-    cutoffs = {"train": timestamp(validation_start), "validation": timestamp(test_start)}
+    if set(partitions) != set(PARTITIONS):
+        raise ContractError("exactly train, validation and test partitions are required")
     if any(not partitions.get(name) for name in PARTITIONS):
         raise ContractError("every chronological partition must be non-empty")
-    by_id = {row["payment_id"]: row for name in PARTITIONS for row in partitions[name]}
-    if len(by_id) != sum(len(partitions[name]) for name in PARTITIONS):
-        raise ContractError("payment appears in more than one partition")
+    rows = [row for name in PARTITIONS for row in partitions[name]]
+    expected = partition_chronological(rows, validation_start, test_start)
+    for name in PARTITIONS:
+        if {row["payment_id"] for row in partitions[name]} != {
+            row["payment_id"] for row in expected[name]
+        }:
+            raise ContractError("payment outside declared chronological partition")
+    by_id = {row["payment_id"]: row for row in rows}
+    cutoffs = {"train": timestamp(validation_start), "validation": timestamp(test_start)}
     label_by_id = {}
     for label in labels:
         validate_shape(label, "label")
         if label["payment_id"] in label_by_id:
             raise ContractError("duplicate label identity")
+        payment = by_id.get(label["payment_id"])
+        if payment is None:
+            raise ContractError("label has no payment record")
+        if label["organization_id"] != payment["organization_id"]:
+            raise ContractError("label organization mismatch")
+        if label["status"] == "resolved" and timestamp(label["available_at"]) < timestamp(
+            payment["occurred_at"]
+        ):
+            raise ContractError("label available before occurrence")
         label_by_id[label["payment_id"]] = label
     if set(by_id) - set(label_by_id):
         raise ContractError("payment has no label record")
@@ -152,19 +176,13 @@ def audit_partitions(partitions, labels, validation_start, test_start):
     for name, cutoff in cutoffs.items():
         known = unresolved = late = 0
         for row in partitions[name]:
-            label = label_by_id.get(row["payment_id"])
-            if label is None:
-                raise ContractError("payment has no label record")
+            label = label_by_id[row["payment_id"]]
             if label["status"] == "unresolved":
                 unresolved += 1
             elif timestamp(label["available_at"]) <= cutoff:
                 known += 1
             else:
                 late += 1
-            if label["status"] == "resolved" and timestamp(label["available_at"]) < timestamp(
-                row["occurred_at"]
-            ):
-                raise ContractError("label available before occurrence")
         report["labels_known_at_partition_end"][name] = {
             "known": known,
             "unresolved": unresolved,

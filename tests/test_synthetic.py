@@ -110,3 +110,46 @@ def test_failures(data):
         generate(1, days=5)
     with pytest.raises(ContractError):
         generate(1, organization_id="real-org")
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "wrong_window",
+        "reversed_boundaries",
+        "extra_partition",
+        "foreign_label",
+        "early_test_label",
+        "invalid_payment",
+        "unmatched_label",
+    ],
+)
+def test_audit_rejects_invalid_partition_evidence(data, fault):
+    parts = copy.deepcopy(partition_chronological(data["payments"], VALIDATION, TEST))
+    labels = copy.deepcopy(data["labels"])
+    validation, test = VALIDATION, TEST
+    if fault == "wrong_window":
+        parts["train"].append(parts["test"].pop())
+    elif fault == "reversed_boundaries":
+        validation, test = TEST, VALIDATION
+    elif fault == "extra_partition":
+        parts["unreviewed"] = parts["test"][:1]
+    elif fault == "foreign_label":
+        labels[0]["organization_id"] = "syn-org-foreign"
+    elif fault == "early_test_label":
+        target = parts["test"][0]["payment_id"]
+        label = next(row for row in labels if row["payment_id"] == target)
+        label.update(status="resolved", **{"class": "legitimate", "available_at": VALIDATION})
+    elif fault == "invalid_payment":
+        parts["train"][0]["available_at"] = "2025-01-01T00:00:00Z"
+    elif fault == "unmatched_label":
+        labels.append({**labels[0], "payment_id": "syn-pay-absent"})
+    with pytest.raises(ContractError):
+        audit_partitions(parts, labels, validation, test)
+
+
+def test_partitioner_rejects_mixed_organizations(data):
+    payments = copy.deepcopy(data["payments"])
+    payments[-1]["organization_id"] = "syn-org-foreign"
+    with pytest.raises(ContractError):
+        partition_chronological(payments, VALIDATION, TEST)
