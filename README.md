@@ -1,9 +1,17 @@
-<p align="center"><img src="assets/overview.svg" alt="Transaction Fraud Lab — evidence before accusation; behavior, timing and reviewer capacity" width="100%"></p>
+<p align="center"><img src="docs/assets/brand/logo.svg" width="88" height="88" alt="PayTelltale logo"></p>
 
-# Transaction Fraud Lab
+# PayTelltale — Payment fraud detection research
 
-[![Documentation integrity](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml)
+<p align="center"><img src="docs/assets/brand/banner.svg" width="100%" alt="PayTelltale: Read payment patterns. Respect the unknowns. Temporal features, Delayed feedback, Review capacity. Offline research components."></p>
+
 [![Implementation checks](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/implementation.yml)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square)](pyproject.toml)
+[![Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-68b89b?style=flat-square)](LICENSE)
+[![Documentation integrity](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml/badge.svg?branch=main)](https://github.com/vishwanathmuthuraman/Transaction-Fraud-Lab/actions/workflows/docs.yml)
+
+[Quick start](#run-the-initial-implementation) · [Implemented scope](docs/IMPLEMENTATION.md) · [Architecture](docs/02-architecture.md) · [Evaluation](docs/04-evaluation.md) · [Contribute](CONTRIBUTING.md)
+
+---
 
 **An evidence-first research plan for ranking suspicious payments under delayed feedback and limited reviewer capacity.**
 
@@ -15,7 +23,9 @@ A payment may look unusual and still be legitimate. This project asks whether a 
 | Examples | Original synthetic cases and expected behavior specifications |
 | Validation | 36 executed component/CLI tests plus separate documentation integrity checks |
 | Implementation | Initial payment features, label-eligibility helper and offline bounded queue; trained model and benchmark pending |
-| Distribution | Curated public research specification; license selection pending |
+| Distribution | Curated public research; Apache-2.0 for original repository material |
+
+This is the public research project previously called **Transaction Fraud Lab**. The repository URL, Python package and CLI commands remain unchanged.
 
 ## Run the initial implementation
 
@@ -75,6 +85,10 @@ See [source rationale](docs/06-sources-and-design-rationale.md) for the primary 
 
 ## Public package
 
-This edition includes original synthetic examples, contracts, evaluation methods, source rationale and public milestones. Internal task schedules and effort estimates are maintained outside the repository. Initial component source and verification are included; trained algorithm results remain pending. License selection is pending; no code, documentation or data license grant is supplied.
+This edition includes original synthetic examples, contracts, evaluation methods, source rationale and public milestones. Internal task schedules and effort estimates are maintained outside the repository. Initial component source and verification are included; trained algorithm results remain pending. Original code, documentation and synthetic fixtures are licensed under Apache-2.0; see LICENSE and NOTICE. Third-party material retains its own terms.
 
 Maintained by [Vishwanath Muthuraman](https://github.com/vishwanathmuthuraman). [Contribution guidance](CONTRIBUTING.md) explains how to propose a synthetic case or challenge a design assumption.
+
+## License
+
+Original repository material is licensed under [Apache-2.0](LICENSE). See [licensing and attribution](docs/09-licensing.md) for scope, third-party material and distribution requirements.
