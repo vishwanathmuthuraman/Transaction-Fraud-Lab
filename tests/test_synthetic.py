@@ -4,7 +4,12 @@ import pytest
 
 from transaction_fraud_lab.common import ContractError, digest, timestamp
 from transaction_fraud_lab.core import eligible_labels
-from transaction_fraud_lab.synthetic import audit_partitions, generate, partition_chronological
+from transaction_fraud_lab.synthetic import (
+    audit_partitions,
+    generate,
+    partition_chronological,
+    sender_lineage,
+)
 
 VALIDATION = "2026-01-25T00:00:00Z"
 TEST = "2026-02-10T00:00:00Z"
@@ -153,3 +158,57 @@ def test_partitioner_rejects_mixed_organizations(data):
     payments[-1]["organization_id"] = "syn-org-foreign"
     with pytest.raises(ContractError):
         partition_chronological(payments, VALIDATION, TEST)
+
+
+def _pay(pid, sender, when):
+    return {
+        "payment_id": f"syn-pay-{pid}",
+        "organization_id": "syn-org-a",
+        "sender_id": sender,
+        "recipient_id": "syn-account-r0001",
+        "occurred_at": when,
+        "available_at": when,
+        "amount_minor": 1000,
+        "currency": "GBP",
+        "channel": "account_transfer",
+        "device_id": None,
+    }
+
+
+def test_sender_lineage_matches_cold_sender_audit(data):
+    parts = partition_chronological(data["payments"], VALIDATION, TEST)
+    lineage = sender_lineage(parts, VALIDATION, TEST)
+    report = audit_partitions(parts, data["labels"], VALIDATION, TEST)
+    firsts = [entry["first_partition"] for entry in lineage.values()]
+    assert firsts.count("validation") == report["cold_senders"]["validation"]
+    assert firsts.count("test") == report["cold_senders"]["test"]
+    assert sum(sum(e["payments"].values()) for e in lineage.values()) == len(data["payments"])
+
+
+def test_sender_lineage_boundary_and_first_occurrence():
+    rows = [
+        _pay("p3", "syn-account-s2", TEST),
+        _pay("p2", "syn-account-s1", VALIDATION),
+        _pay("p1", "syn-account-s1", "2026-01-01T00:00:00Z"),
+        _pay("p4", "syn-account-s3", "2026-01-02T00:00:00Z"),
+    ]
+    lineage = sender_lineage(partition_chronological(rows, VALIDATION, TEST), VALIDATION, TEST)
+    assert lineage["syn-account-s1"]["first_partition"] == "train"
+    assert lineage["syn-account-s1"]["payments"] == {"train": 1, "validation": 1, "test": 0}
+    assert lineage["syn-account-s2"]["first_partition"] == "test"
+    assert lineage["syn-account-s2"]["first_occurred_at"] == TEST
+
+
+def test_sender_lineage_rejects_bad_membership():
+    rows = [
+        _pay("p1", "syn-account-s1", "2026-01-01T00:00:00Z"),
+        _pay("p2", "syn-account-s2", TEST),
+    ]
+    parts = partition_chronological(rows, VALIDATION, TEST)
+    parts["train"].append(parts["test"].pop())
+    with pytest.raises(ContractError):
+        sender_lineage(parts, VALIDATION, TEST)
+    with pytest.raises(ContractError):
+        sender_lineage({"train": []}, VALIDATION, TEST)
+    with pytest.raises(ContractError):
+        sender_lineage(partition_chronological(rows, VALIDATION, TEST), TEST, VALIDATION)

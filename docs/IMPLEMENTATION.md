@@ -42,6 +42,14 @@ After repair, **51 source tests pass** (the original 43 plus 8 regression cases)
 
 Remaining limits: the generator patterns are authored assumptions, not reviewed against real data, and the fraud-like burst pattern is a toy. No generator CLI command, cold-entity split experiment, baseline or metric exists. Nothing here shows that results on synthetic data generalize to real fraud. The full staged maturity schedule remains future work.
 
+### Sender lineage (step 1, partial) — 20 October 2026
+
+Added `sender_lineage` in [synthetic](../src/transaction_fraud_lab/synthetic.py): for each sender it reports first partition, earliest occurrence time and per-partition payment counts. It first re-validates membership against the shared chronological splitter (including start-inclusive boundaries) and uses occurrence time only; labels are never read. Three tests in [test_synthetic](../tests/test_synthetic.py) cover agreement with the cold-sender audit counts, boundary/first-occurrence handling on hand-built rows, and rejection of misplaced rows, missing partitions and reversed boundaries.
+
+Commands run: `uv run --locked ruff format src tests`, `ruff check src tests`, `pytest`, `scripts/check_public_docs.py`, `scripts/validate_blueprint.py` (the latter rewrote docs/blueprint-validation.json, which was reverted). Observed: 54 passed (3 new), lint and format passed, both documentation scripts ran without error.
+
+Limits: lineage is a descriptive report on synthetic data, not an entity-isolated split; no recipient or device lineage, no cold-entity experiment, no metrics.
+
 ## Relationship to the full plan
 
 Contracts/eligibility, the seeded generator, chronological audit and candidate feature/queue milestones have partial evidence. Trained baselines, calibration, entity-isolated splits, evaluation metrics and frozen evaluation remain pending.
