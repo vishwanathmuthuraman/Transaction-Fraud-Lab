@@ -189,3 +189,35 @@ def audit_partitions(partitions, labels, validation_start, test_start):
             "not_yet_available": late,
         }
     return report
+
+
+def sender_lineage(partitions, validation_start, test_start):
+    """Return each sender's first partition, first occurrence and per-partition payment counts.
+
+    Membership is validated against the shared chronological splitter first.
+    Lineage uses occurrence time only and never reads labels.
+    """
+    if set(partitions) != set(PARTITIONS):
+        raise ContractError("exactly train, validation and test partitions are required")
+    rows = [row for name in PARTITIONS for row in partitions[name]]
+    expected = partition_chronological(rows, validation_start, test_start)
+    for name in PARTITIONS:
+        if {row["payment_id"] for row in partitions[name]} != {
+            row["payment_id"] for row in expected[name]
+        }:
+            raise ContractError("payment outside declared chronological partition")
+    lineage = {}
+    for name in PARTITIONS:
+        for row in partitions[name]:
+            entry = lineage.setdefault(
+                row["sender_id"],
+                {
+                    "first_partition": name,
+                    "first_occurred_at": row["occurred_at"],
+                    "payments": {part: 0 for part in PARTITIONS},
+                },
+            )
+            entry["payments"][name] += 1
+            if timestamp(row["occurred_at"]) < timestamp(entry["first_occurred_at"]):
+                entry["first_occurred_at"] = row["occurred_at"]
+    return dict(sorted(lineage.items()))
